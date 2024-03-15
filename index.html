@@ -1,45 +1,251 @@
 <html>
-    <head>
-        <title>Pokedex</title>
-        <link href="style.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="main">
-            <h1>Pokedex</h1>
-            <div class="pokemon-boxes">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            }
+          }
+        }
+      }
+    </script>
 
-                <div class="pokemon-box">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="">
-                    <p>Dito</p>
-                </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("a").on('click', function(event) {
 
-                <div class="pokemon-box">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="">
-                    <p>Dito</p>
-                </div>
+        if (this.hash !== "") {
+          event.preventDefault();
 
-                <div class="pokemon-box">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="">
-                    <p>Dito</p>
-                </div>
+          var hash = this.hash;
 
-                <div class="pokemon-box">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="">
-                    <p>Dito</p>
-                </div>
-
-                <div class="pokemon-box">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="">
-                    <p>Dito</p>
-                </div>
-
-                <div class="pokemon-box">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="">
-                    <p>Dito</p>
-                </div>
-
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+      
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <nav class="bg-white">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button id="menuButton" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Open main menu</span>
+              <!--
+                Icon when menu is closed.
+    
+                Menu open: "hidden", Menu closed: "block"
+              -->
+              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <!--
+                Icon when menu is open.
+    
+                Menu open: "block", Menu closed: "hidden"
+              -->
+              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex flex-shrink-0 items-center">
+              <i class="fa-brands fa-shopify h-8 w-auto text-red-600 text-2xl"></i>
+              <!-- <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"> -->
             </div>
+            <div id="menuColapse" class="sm:ml-6 sm:block hidden">
+              <div class="flex space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#sectionTwo" class="bg-red-600 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Our Values</a>
+                <a href="#sectionThree" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tech Journey</a>
+                <a href="#sectionFour" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Trends</a>
+                <a href="#sectionFive" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Operatings</a>
+                <a href="#sectionSix" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Pricing</a>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <button type="button" class="relative rounded-full bg-red-600 p-1 text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="absolute -inset-1.5"></span>
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button>
+    
+            <!-- Profile dropdown -->
+            <div class="relative ml-3">
+              <div>
+                <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                </button>
+              </div>
+    
+            </div>
+          </div>
         </div>
-        <script src="script.js"></script>
-    </body>
+      </div>
+    
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="sm:hidden hidden" id="menuColapseDown">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a href="#" class="bg-red-600 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+          <a href="#" class="text-gray-300 hover:bg-red-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+          <a href="#" class="text-gray-300 hover:bg-red-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+          <a href="#" class="text-gray-300 hover:bg-red-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+        </div>
+      </div>
+    </nav>
+    <script src="script.js"></script>
+
+    <div id="sectionOne" class="sectionOne relative items-center">
+      <div id="imageOne">
+            <img class=" w-full h-auto md:h-full object-cover " src="images/tenis2.jpg" alt="">
+          </div>
+          <div id="textOne" class="textOne absolute flex flex-col gap-2">
+            <h1 class=" text-3xl md:text-5xl">A T500</h1>
+            <hr class="border-4 border-red-600 rounded-md">
+            <span class="text-xl">Silence, please</span>
+            <button class="bg-red-600 hover:bg-gray-500 text-white font-bold py-2 px-4 border rounded">
+              Shop Now
+            </button>
+          </div>
+    </div>
+
+    <div id="sectionTwo" class="mt-4 flex flex-col gap-2">
+      <h1 class="text-3xl md:text-4xl ml-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >Best Sellers</h1>
+
+      <div id="cardsTwo" class="flex flex-wrap gap-8 justify-center items-center">
+        <div id="singleCardTwo" class="w-72 flex flex-col flex-wrap">
+          <div class="h-96 w-full flex justify-center items-center overflow-hidden rounded-md ">
+            <img class="w-full h-full object-cover hover:scale-125 duration-300 " src="images/tenis3.jpg" alt="">
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Nike air </h1>
+              <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">39,90</h1>
+            </div>
+
+            <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">unissex</h1>
+          </div>
+        </div>
+
+        <div id="singleCardTwo" class="w-72 flex flex-col flex-wrap">
+          <div class="h-96 w-full flex justify-center items-center overflow-hidden rounded-md">
+            <img class="w-full h-full object-cover hover:scale-125 duration-300" src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Nike air </h1>
+              <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">39,90</h1>
+            </div>
+
+            <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">unissex</h1>
+          </div>
+        </div>
+
+        <div id="singleCardTwo" class="w-72 flex flex-col flex-wrap">
+          <div class="h-96 w-full flex justify-center items-center overflow-hidden rounded-md">
+            <img class="w-full h-full object-cover hover:scale-125 duration-300" src="https://images.unsplash.com/photo-1636718282214-0b4162a154f0?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Nike air </h1>
+              <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">39,90</h1>
+            </div>
+
+            <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">unissex</h1>
+          </div>
+        </div>
+
+        <div id="singleCardTwo" class="w-72 flex flex-col flex-wrap">
+          <div class="h-96 w-full flex justify-center items-center overflow-hidden rounded-md">
+            <img class="w-full h-full object-cover hover:scale-125 duration-300" src="https://images.unsplash.com/photo-1593081891731-fda0877988da?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Nike air </h1>
+              <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">39,90</h1>
+            </div>
+
+            <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">unissex</h1>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <div id="sectionThree" class="mt-4 flex flex-col gap-4">
+      <h1 class="text-3xl md:text-4xl ml-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >Categorys</h1>
+
+      <div class="w-full flex justify-center items-center">
+        <div id="cardsThree" class="flex flex-wrap gap-8 justify-center items-center">
+          <div id="singleCardThree" class=" lg:w-96 flex flex-col flex-wrap m-4">
+            <div class="cursor-pointer w-full flex justify-center items-center overflow-hidden rounded-sm">
+              <img class="w-full h-full object-cover hover:scale-125 duration-300" src="https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+            <h1 class="underline cursor-pointer" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Shoes </h1>
+          </div>
+
+          <div id="singleCardThree" class="lg:w-96 flex flex-col flex-wrap m-4">
+            <div class="cursor-pointer w-full flex justify-center items-center overflow-hidden rounded-sm">
+              <img class="w-full h-full object-cover hover:scale-125 duration-300" src="https://images.unsplash.com/photo-1596637510298-637b184503e1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+            <h1 class="underline cursor-pointer" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Clothing </h1>
+          </div>
+
+          <div id="singleCardThree" class=" lg:w-96 flex flex-col flex-wrap m-4">
+            <div class="cursor-pointer w-full flex justify-center items-center overflow-hidden rounded-sm">
+              <img class="w-full h-full object-cover hover:scale-125 duration-300" src="https://images.unsplash.com/photo-1579362093956-a743707ecac1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+            <h1 class="underline cursor-pointer" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Accessories </h1>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="sectionFour">
+        <h1 class="text-3xl md:text-4xl ml-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" >New In</h1>
+          <div class=" container mx-auto mt-8 w-full overflow-x-auto">
+            <div class="image-list flex w-96 gap-8">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+              <img src="https://images.unsplash.com/photo-1572196223922-d8b7e0ab0b4d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-item" alt="">
+      
+            </div>
+          </div>
+
+        
+      </div>
+
+      <script src="script.js"></script>
+      
+  </body>
 </html>
+
